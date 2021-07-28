@@ -146,13 +146,9 @@ public class ItemModal implements ItemDAO{
     public void refreshItemQuantity(Vouncher vouncher) {
         try {
             PreparedStatement st = DAO.getDAO().getCon()
-                        .prepareStatement("update items set" +
-                        " quantity = (select quantity from items where name = ?) - " +
-                        " (select quantity from sales where id = ?)" +
-                        " where name = ?");
+                        .prepareStatement("call subtract_quantity(?,?)");
             st.setString(1, vouncher.getItemname());
             st.setInt(2, vouncher.getId());
-            st.setString(3, vouncher.getItemname());
             
             st.execute();
             
