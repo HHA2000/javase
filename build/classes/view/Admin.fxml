@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="862.0" prefWidth="1307.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+   <children>
+      <MenuBar layoutY="1.0" prefHeight="30.0" prefWidth="1001.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="User">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#menuUser" text="Open" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" onAction="#menuItem" text="Item">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#menuItem" text="Items" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Report">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#menuSaleReport" text="Sale" />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+      <Pane fx:id="paneUser" layoutX="6.0" layoutY="28.0" prefHeight="675.0" prefWidth="1001.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Pane layoutX="22.0" layoutY="36.0" prefHeight="254.0" prefWidth="395.0">
+               <children>
+                  <TextField fx:id="txtUsername" layoutX="69.0" layoutY="61.0" promptText="Username" />
+                  <ComboBox fx:id="comboType" layoutX="69.0" layoutY="158.0" prefHeight="24.0" prefWidth="170.0" promptText="Type" />
+                  <Button layoutX="67.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnAddAction" text="Add" />
+                  <PasswordField fx:id="txtPassword" layoutX="69.0" layoutY="108.0" promptText="Password" />
+                  <Label fx:id="lbluserRegister" layoutX="68.0" layoutY="45.0" text="Label" textFill="RED" visible="false" />
+                  <Label fx:id="lblpasswordRegister" layoutX="68.0" layoutY="92.0" text="Label" textFill="RED" visible="false" />
+                  <Label fx:id="lblType" layoutX="68.0" layoutY="142.0" text="Label" textFill="RED" visible="false" />
+                  <Button layoutX="232.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnRemoveUser" text="Remove" />
+                  <Button layoutX="143.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnUpdateAction" text="Update" />
+               </children>
+            </Pane>
+            <TableView fx:id="tableUser" editable="true" layoutX="438.0" layoutY="68.0" prefHeight="685.0" prefWidth="665.0">
+              <columns>
+                <TableColumn fx:id="columnUsername" onEditCommit="#onEditChangeUserName" prefWidth="281.0" text="Name" />
+                <TableColumn fx:id="columnUserType" onEditCommit="#onEditChangeUserType" prefWidth="261.0" text="type" />
+              </columns>
+            </TableView>
+            <Label fx:id="lblSelectRow" layoutX="633.0" layoutY="50.0" prefHeight="19.0" prefWidth="170.0" text="Please select user row" textFill="RED" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableRequestedUser" layoutX="82.0" layoutY="416.0" prefHeight="334.0" prefWidth="297.0">
+              <columns>
+                <TableColumn fx:id="columnRequestedUsername" prefWidth="131.0" text="Name" />
+                <TableColumn fx:id="columnRequestUsertype" prefWidth="157.0" text="Type" />
+              </columns>
+            </TableView>
+            <Label layoutX="82.0" layoutY="380.0" text="Requested User Table">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="438.0" layoutY="50.0" text="User Table">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="260.0" layoutY="389.0" mnemonicParsing="false" onAction="#btnUserAccept" text="Accept">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button layoutX="316.0" layoutY="388.0" mnemonicParsing="false" onAction="#btnUserRemove" prefHeight="24.0" prefWidth="63.0" text="Remove">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblSelectRequestUser" layoutX="139.0" layoutY="401.0" text="Please Select Row" textFill="RED" visible="false">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="paneItem" layoutX="85.0" layoutY="73.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <TableView fx:id="tableItem" editable="true" layoutX="338.0" layoutY="87.0" prefHeight="737.0" prefWidth="960.0">
+              <columns>
+                <TableColumn fx:id="columnItemcode" prefWidth="126.0" text="Item Code" />
+                <TableColumn fx:id="columnItemname" prefWidth="161.0" text="Name" />
+                  <TableColumn fx:id="columnItemquantity" onEditCommit="#onEditChangeItemQuantiity" prefWidth="137.0" text="Quantity" />
+                  <TableColumn fx:id="columnItemprice" onEditCommit="#onEditChangeItemPrice" prefWidth="169.0" text="Price" />
+                  <TableColumn fx:id="columnItemDescription" onEditCommit="#onEditChangeItemDescription" prefWidth="352.0" text="Description" />
+              </columns>
+            </TableView>
+            <Label layoutX="338.0" layoutY="66.0" text="Item Table">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Pane layoutX="34.0" layoutY="416.0" prefHeight="398.0" prefWidth="250.0">
+               <children>
+                  <TableView fx:id="tableCategories" editable="true" layoutX="14.0" layoutY="57.0" prefHeight="254.0" prefWidth="223.0">
+                    <columns>
+                      <TableColumn fx:id="columnCategoryName" onEditCommit="#onEditChangeCategoryName" prefWidth="219.0" text="Name" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="14.0" layoutY="22.0" text="Categories Table">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCategory" layoutX="14.0" layoutY="334.0" prefHeight="24.0" prefWidth="223.0" promptText="Category " />
+                  <Button layoutX="16.0" layoutY="364.0" mnemonicParsing="false" onAction="#btnCategoryAdd" text="Add" />
+                  <Button layoutX="167.0" layoutY="364.0" mnemonicParsing="false" onAction="#btnCategoryRemove" text="Remove" />
+                  <Button layoutX="85.0" layoutY="364.0" mnemonicParsing="false" onAction="#btnCategoryUpdate" text="Update" />
+                  <Label fx:id="lblCategory" layoutX="14.0" layoutY="318.0" text="Type category" textFill="RED" visible="false" />
+                  <Label fx:id="lblCategorySelectRow" layoutX="66.0" layoutY="41.0" text="Please Select Row" textFill="RED" visible="false" />
+                  <Button layoutX="172.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnSearchItem" text="Search" />
+               </children>
+            </Pane>
+            <Label fx:id="lblSelectItem" layoutX="759.0" layoutY="68.0" text="Please Select Row" textFill="RED" visible="false" />
+            <Pane layoutX="10.0" layoutY="62.0" prefHeight="354.0" prefWidth="287.0">
+               <children>
+                  <Button layoutX="176.0" layoutY="280.0" mnemonicParsing="false" onAction="#btnItemRemove" text="Remove" />
+                  <Button layoutX="103.0" layoutY="280.0" mnemonicParsing="false" onAction="#btnItemUpdate" text="Update" />
+                  <Button layoutX="45.0" layoutY="280.0" mnemonicParsing="false" onAction="#btnItemAdd" text="Add" />
+                  <TextArea fx:id="txtItemDescription" layoutX="44.0" layoutY="189.0" prefHeight="75.0" prefWidth="204.0" promptText="Description" />
+                  <TextField fx:id="txtItemPrice" layoutX="44.0" layoutY="112.0" prefHeight="24.0" prefWidth="204.0" promptText="Price" />
+                  <Label fx:id="lblItemPrice" layoutX="45.0" layoutY="96.0" text="Type Price" textFill="RED" visible="false" />
+                  <TextField fx:id="txtItemQuantity" layoutX="45.0" layoutY="72.0" prefHeight="24.0" prefWidth="204.0" promptText="Quantity" />
+                  <Label fx:id="lblItemQuantity" layoutX="47.0" layoutY="55.0" text="Type Quantity" textFill="RED" visible="false" />
+                  <TextField fx:id="txtItemName" layoutX="45.0" layoutY="31.0" prefHeight="24.0" prefWidth="204.0" promptText="Name" />
+                  <Label fx:id="lblItemname" layoutX="47.0" layoutY="14.0" text="Type Item Name" textFill="RED" visible="false" />
+                  <ComboBox fx:id="comboItemCategory" layoutX="45.0" layoutY="153.0" prefHeight="24.0" prefWidth="204.0" promptText="Category" />
+                  <Label fx:id="lblItemCategory" layoutX="45.0" layoutY="136.0" text="Select Category" textFill="RED" visible="false" />
+               </children>
+            </Pane>
+            <Button layoutX="1231.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnRefreshItemTable" text="Refresh" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneSaleReport" layoutX="21.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <TableView fx:id="tableSaleCategory" layoutX="30.0" layoutY="484.0" prefHeight="286.0" prefWidth="223.0">
+              <columns>
+                <TableColumn fx:id="columnSaleCategoryname" prefWidth="222.0" text="Name" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tableSales" layoutX="318.0" layoutY="55.0" prefHeight="715.0" prefWidth="617.0">
+              <columns>
+                <TableColumn fx:id="columnSalename" prefWidth="168.0" text="Name" />
+                <TableColumn fx:id="columnSaleQuantity" prefWidth="213.0" text="Quantity" />
+                  <TableColumn fx:id="columnSalePrice" prefWidth="249.0" text="Price" />
+              </columns>
+            </TableView>
+            <Button layoutX="190.0" layoutY="441.0" mnemonicParsing="false" onAction="#btnSaleCategorySearch" text="Search" />
+            <Button layoutX="867.0" layoutY="25.0" mnemonicParsing="false" onAction="#btnSaleRefresh" text="Refresh" />
+            <Label fx:id="lblSaleCategory" layoutX="87.0" layoutY="465.0" text="Please Select row" textFill="RED" visible="false" />
+            <Label layoutX="318.0" layoutY="29.0" text="Sale Table">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="444.0" text="Category Table">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </children>
+</AnchorPane>

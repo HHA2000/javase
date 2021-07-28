@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="805.0" prefWidth="1147.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+   <children>
+      <Pane fx:id="paneUser" layoutX="85.0" layoutY="55.0" prefHeight="695.0" prefWidth="939.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="902.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnItemSearchByCategoryID" text="Search" />
+            <TableView fx:id="tableCategory" layoutX="902.0" layoutY="461.0" prefHeight="330.0" prefWidth="224.0">
+              <columns>
+                <TableColumn fx:id="columnCategoryName" prefWidth="223.0" text="Category" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tableCart" editable="true" layoutX="902.0" layoutY="85.0" prefHeight="330.0" prefWidth="224.0">
+              <columns>
+                <TableColumn fx:id="columnCartItemName" prefWidth="69.0" text="Name" />
+                <TableColumn fx:id="columnCartItemQuantity" onEditCommit="#onEditChangeQuantity" text="Quantity" />
+                  <TableColumn fx:id="columnCartItemPrice" prefWidth="68.0" text="Price" />
+                  <TableColumn fx:id="columnCartItemCategoryID" minWidth="0.0" prefWidth="12.0" text="CategoryID" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tableItem" layoutX="24.0" layoutY="76.0" prefHeight="709.0" prefWidth="841.0">
+              <columns>
+                <TableColumn fx:id="columnItemName" prefWidth="213.0" text="Name" />
+                <TableColumn fx:id="columnItemPrice" prefWidth="176.0" text="Price" />
+                  <TableColumn fx:id="columnItemQuantity" prefWidth="180.0" text="Quantity" />
+                  <TableColumn fx:id="columnItemDescription" prefWidth="223.0" text="Description" />
+              </columns>
+            </TableView>
+            <Button layoutX="773.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnAddtoCart" text="Add to cart" />
+            <Button layoutX="24.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnItemTableRefresh" text="Refresh" />
+            <Button layoutX="903.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnCheckOut" prefHeight="22.0" prefWidth="75.0" text="Check out">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button layoutX="999.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnCartItemRemove" prefHeight="24.0" prefWidth="127.0" text="Remove from cart">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblCartItem" layoutX="957.0" layoutY="68.0" text="Please select row" textFill="RED" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneVouncher" layoutX="376.0" layoutY="167.0" prefHeight="430.0" prefWidth="396.0" visible="false">
+         <children>
+            <Label layoutX="150.0" layoutY="24.0" text="Vouncher">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="77.0" text="Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableVouncher" layoutX="14.0" layoutY="115.0" prefHeight="235.0" prefWidth="366.0">
+              <columns>
+                <TableColumn fx:id="columnVouncherItem" prefWidth="104.0" text="Item " />
+                <TableColumn fx:id="columnVouncherQuantity" prefWidth="147.0" text="Quantity" />
+                  <TableColumn fx:id="columnVouncherPrice" prefWidth="113.0" text="Price" />
+              </columns>
+            </TableView>
+            <Button layoutX="135.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnBuy" text="Buy" />
+            <Button layoutX="198.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnVouncherCancel" text="Cancel" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
