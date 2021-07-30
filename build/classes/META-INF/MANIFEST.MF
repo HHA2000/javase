@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.8
+Created-By: 16.0.1+9-Ubuntu-120.04 (Private Build)
+Class-Path: lib/javafx-swt.jar lib/javafx.base.jar lib/javafx.controls
+ .jar lib/javafx.fxml.jar lib/javafx.graphics.jar lib/javafx.media.jar
+  lib/javafx.swing.jar lib/javafx.web.jar lib/mysql-connector-java-8.0
+ .25.jar lib/jasypt-1.9.3.jar lib/jasypt-1.9.3.jar
+X-COMMENT: Main-Class will be added automatically by build
+Main-Class: Main
+

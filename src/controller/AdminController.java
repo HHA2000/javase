@@ -152,6 +152,8 @@ public class AdminController implements Initializable {
         loadSaleTable();
     }    
     
+    //------UserView----------
+    
     UserDAO user = new UserModal();
     
      private void loadRequestedUserTable(){
@@ -162,7 +164,7 @@ public class AdminController implements Initializable {
         
         tableRequestedUser.setItems(obser);
     }
-     
+    
     @FXML
     private void btnUserAccept(ActionEvent event) {
         if(!tableRequestedUser.getSelectionModel().isEmpty()){
@@ -185,7 +187,6 @@ public class AdminController implements Initializable {
             lblSelectRequestUser.setVisible(true);
         }
     }
-    
     
     private void loadUserTable(){
         List<User> userlist = user.getValidUser();
@@ -317,7 +318,6 @@ public class AdminController implements Initializable {
         }
     }
     
-
     @FXML
     private void btnRemoveUser(ActionEvent event) {
         removeUser();
@@ -355,6 +355,8 @@ public class AdminController implements Initializable {
         paneSaleReport.setVisible(true);
     }
 
+    //--------Category----------
+    
     CategoryDAO category = new CategoryModal();
     
     private void loadCategoryTable(){
@@ -430,6 +432,7 @@ public class AdminController implements Initializable {
         }
     }
     
+    //--------------Item------------------
     
     ItemModal item = new ItemModal();
 
@@ -661,6 +664,9 @@ public class AdminController implements Initializable {
     private void btnRefreshItemTable(ActionEvent event) {
         loadItemTable();
     }
+    
+    //-------------Sale-------------------
+    
     SaleModal sale = new SaleModal();  
     
     private void loadSaleCategoryTable(){
